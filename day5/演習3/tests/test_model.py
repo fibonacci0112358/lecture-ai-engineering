@@ -176,14 +176,14 @@ def test_model_reproducibility(sample_data, preprocessor):
 def test_model_performance_comparison(train_model):
     """過去バージョンのモデルと比較して性能劣化がないか検証"""
     current_model, X_test, y_test = train_model
-    
+
     # 現在のモデルの性能を評価
     current_predictions = current_model.predict(X_test)
     current_accuracy = accuracy_score(y_test, current_predictions)
-    
+
     # 基準となる性能値（この値は過去の実績に基づいて設定）
     BASELINE_ACCURACY = 0.75
-    
+
     # 性能比較
     assert current_accuracy >= BASELINE_ACCURACY, (
         f"モデルの性能が基準値を下回っています。"
